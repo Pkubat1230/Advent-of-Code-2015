@@ -1,0 +1,43 @@
+---
+title: "Day1Solution"
+author: "Paul Kubat"
+date: "12/21/2021"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+library(readr)
+myFile <- "https://raw.githubusercontent.com/Pkubat1230/Advent-of-Code-2015/main/Day1/Day1%20Data"
+
+Day1 <- read.csv(myFile,header = FALSE,colClasses = "character")
+```
+
+```{r}
+#Part 1
+floorCounter <- 0
+for(i in 1:nchar(Day1[1,1])){
+  if(substr(Day1[1,1],i,i) == "("){
+    floorCounter = floorCounter + 1
+  }else{
+    floorCounter = floorCounter - 1
+  }
+}
+print(floorCounter)
+```
+
+```{r}
+#part 2
+floorCounter <- 0
+for(i in 1:nchar(Day1[1,1])){
+  if(substr(Day1[1,1],i,i) == "("){
+    floorCounter = floorCounter + 1
+  }else{
+    floorCounter = floorCounter - 1
+  }
+  if(floorCounter < 0){
+    floorCounter = i
+    break
+  }
+}
+print(floorCounter)
+```
