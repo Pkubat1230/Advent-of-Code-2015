@@ -1,0 +1,30 @@
+---
+title: "Day5 Solution"
+author: "Paul Kubat"
+date: "12/21/2021"
+output: html_document
+---
+
+```{r}
+library(readxl)
+library(tidyverse)
+Day5 <- read.csv("input.txt",header = FALSE)
+```
+
+```{r}
+#Part 1
+Day5 %>%
+  filter(str_detect(Day5$V1, "(.*[aeiou]){3,}"),
+         str_detect(Day5$V1,"(.)\\1"),
+         str_detect(Day5$V1,"(ab)|(cd)|(pq)|(xy)",negate=TRUE)) %>%
+  nrow()
+```
+
+```{r}
+#Part 2
+Day5 %>%
+  filter(str_detect(Day5$V1, "(..).*\\1"),
+         str_detect(Day5$V1,"(.).\\1")) %>%
+  nrow()
+
+```
